@@ -78,11 +78,14 @@ h6 {
   font-style: italic;
 }
 
+pre {
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: #f4f4f4;
+}
+
 tt, code, kbd, samp {
   font-family: Consolas, Monaco, "Andale Mono", monospace;
-  background: #f4f4f4;
-  padding: 1px 5px;
-  border-radius: 5px;
 }
 
 .class-description {
@@ -285,74 +288,6 @@ footer {
   font-style: italic;
   font-size: 107%;
   margin: 0;
-}
-
-.prettyprint {
-  font-size: 13px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.05);
-  overflow: auto;
-}
-
-.prettyprint.source {
-  width: inherit
-}
-
-.prettyprint code {
-  font-size: 100%;
-  line-height: 18px;
-  display: block;
-  margin: 0 30px;
-  background-color: #fff;
-  color: #4D4E53;
-}
-
-.prettyprint code:empty:before {
-  content: '';
-}
-
-.prettyprint > code {
-  padding: 15px
-}
-
-.prettyprint .linenums code {
-  padding: 0 15px
-}
-
-.prettyprint .linenums li:first-of-type code {
-  padding-top: 15px
-}
-
-.prettyprint code span.line {
-  display: inline-block
-}
-
-.prettyprint.linenums {
-  padding-left: 70px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.prettyprint.linenums ol {
-   padding-left: 0
-}
-
-.prettyprint.linenums li {
-   border-left: 3px #ddd solid
-}
-
-.prettyprint.linenums li.selected, .prettyprint.linenums li.selected * {
-   background-color: lightyellow
-}
-
-.prettyprint.linenums li * {
-   -webkit-user-select: text;
-   -moz-user-select: text;
-   -ms-user-select: text;
-   user-select: text;
 }
 
 .params, .props {
