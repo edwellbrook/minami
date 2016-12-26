@@ -1,5 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-
 * {
   box-sizing: border-box
 }
@@ -15,7 +13,7 @@ body {
   margin: 0 auto;
   padding: 0 20px;
 
-  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 16px;
   line-height: 160%;
 }
@@ -32,10 +30,6 @@ a:hover {
 
 p, ul, ol, blockquote {
   margin-bottom: 1em;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -85,7 +79,7 @@ h6 {
 }
 
 tt, code, kbd, samp {
-  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  font-family: Consolas, Monaco, "Andale Mono", monospace;
   background: #f4f4f4;
   padding: 1px 5px;
   border-radius: 5px;
@@ -152,7 +146,6 @@ nav h3 {
 }
 
 nav ul {
-  font-family: 'Lucida Grande', 'Lucida Sans Unicode', arial, sans-serif;
   font-size: 100%;
   line-height: 17px;
   padding: 0;
@@ -162,7 +155,6 @@ nav ul {
 
 nav ul a,
 nav ul a:active {
-  font-family: 'Montserrat', sans-serif;
   line-height: 18px;
   padding: 0;
   display: block;
@@ -245,7 +237,7 @@ footer {
 }
 
 .name, .signature {
-  font-family: Consolas, Monaco, 'Andale Mono', monospace
+  font-family: Consolas, Monaco, "Andale Mono", monospace
 }
 
 .details {
@@ -375,7 +367,7 @@ footer {
 
 .params .name, .props .name, .name code {
    color: #4D4E53;
-   font-family: Consolas, Monaco, 'Andale Mono', monospace;
+   font-family: Consolas, Monaco, "Andale Mono", monospace;
    font-size: 100%;
 }
 
@@ -422,7 +414,7 @@ dl.param-type {
 }
 
 .param-type dd {
-  font-family: Consolas, Monaco, 'Andale Mono', monospace
+  font-family: Consolas, Monaco, "Andale Mono", monospace
 }
 
 .disabled {
