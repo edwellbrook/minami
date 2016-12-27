@@ -80,17 +80,17 @@
 
         <tr>
             <?js if (params.hasName) {?>
-                <td class="name"><code><?js= param.name ?></code></td>
+                <td><code><?js= param.name ?></code></td>
             <?js } ?>
 
-            <td class="type">
+            <td>
             <?js if (param.type && param.type.names) {?>
                 <?js= self.partial('type.tmpl', param.type.names) ?>
             <?js } ?>
             </td>
 
             <?js if (params.hasAttributes) {?>
-                <td class="attributes">
+                <td>
                 <?js if (param.optional) { ?>
                     &lt;optional><br>
                 <?js } ?>
@@ -106,7 +106,7 @@
             <?js } ?>
 
             <?js if (params.hasDefault) {?>
-                <td class="default">
+                <td>
                 <?js if (typeof param.defaultvalue !== 'undefined') { ?>
                     <?js= self.htmlsafe(param.defaultvalue) ?>
                 <?js } ?>

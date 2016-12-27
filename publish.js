@@ -80,8 +80,15 @@ function updateItemName(item) {
     }
 
     if (attributes && attributes.length) {
-        itemName = util.format( '%s<span class="signature-attributes">%s</span>', itemName,
-            attributes.join(', ') );
+        const idx = attributes.indexOf('opt');
+        if (idx !== -1) {
+            itemName = `<span class="optional-param">[${itemName}]</span>`;
+            attributes.splice(idx, 1);
+        }
+
+        if (attributes.length > 0) {
+            itemName = util.format('%s<span class="signature-attributes">%s</span>', itemName, attributes.join(', '));
+        }
     }
 
     return itemName;
@@ -109,7 +116,7 @@ function buildAttribsString(attribs) {
     var attribsString = '';
 
     if (attribs && attribs.length) {
-        attribsString = htmlsafe( util.format('(%s) ', attribs.join(', ')) );
+        attribsString = htmlsafe(util.format('(%s) ', attribs.join(', ')));
     }
 
     return attribsString;
@@ -127,7 +134,7 @@ function addNonParamAttributes(items) {
 
 function addSignatureParams(f) {
     var params = f.params ? addParamAttributes(f.params) : [];
-    f.signature = util.format( '%s(%s)', (f.signature || ''), params.join(', ') );
+    f.signature = util.format('%s(%s)', (f.signature || ''), params.join(', '));
 }
 
 function addSignatureReturns(f) {
@@ -358,6 +365,7 @@ exports.publish = function(taffyData, opts, tutorials) {
     view.htmlsafe = helper.htmlsafe;
     view.outputSourceFiles = conf.default && conf.default.outputSourceFiles !== false;
     view.useLongnameInNav = conf.default && conf.default.useLongnameInNav !== false;
+    view.hideReturnValues = conf.default && conf.default.hideReturnValues === true;
 
 
     //

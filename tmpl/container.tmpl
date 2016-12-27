@@ -86,10 +86,12 @@
     ?>
         <h3 class="subsection-title">Classes</h3>
 
-        <dl><?js classes.forEach(function(c) { ?>
+        <dl>
+            <?js classes.forEach(function(c) { ?>
             <dt><?js= self.linkto(c.longname, c.name) ?></dt>
             <dd><?js if (c.summary) { ?><?js= c.summary ?><?js } ?></dd>
-        <?js }); ?></dl>
+            <?js }); ?>
+        </dl>
     <?js } ?>
 
      <?js
@@ -140,9 +142,13 @@
     ?>
         <h3 class="subsection-title">Methods</h3>
 
+        <div class="subsection-methods">
         <?js methods.forEach(function(m) { ?>
-            <?js= self.partial('method.tmpl', m) ?>
+            <div class="method">
+                <?js= self.partial('method.tmpl', m) ?>
+            </div>
         <?js }); ?>
+        </div>
     <?js } ?>
 
     <?js
