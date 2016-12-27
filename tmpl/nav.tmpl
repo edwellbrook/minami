@@ -1,0 +1,22 @@
+<h2><a href="index.html">Home</a></h2>
+
+<?js Object.keys(this.members).forEach(itemHeading => { ?>
+<?js const items = this.members[itemHeading] ?>
+<?js if (items.length > 0) { ?>
+<h3><?js= itemHeading ?></h3>
+<ul>
+<?js items.forEach(item => { ?>
+<?js const methods = this.find({ kind:'function', memberof: item.longname }) ?>
+<li>
+    <?js const displayName = this.useLongnameInNav ? item.longname : item.name ?>
+    <?js= this.linkto(item.longname, displayName.replace(/^module:/g, '')) ?>
+    <ul class="methods">
+        <?js methods.forEach(method => { ?>
+            <li data-type="method"><?js= this.linkto(method.longname, method.name) ?></li>
+        <?js })?>
+    </ul>
+<li>
+<?js }) ?>
+</ul>
+<?js } ?>
+<?js }) ?>

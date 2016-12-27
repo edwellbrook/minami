@@ -277,117 +277,12 @@ function attachModuleSymbols(doclets, modules) {
     });
 }
 
-function buildMemberNav(data, items, itemHeading, itemsSeen, linktoFn) {
-    var nav = '';
-    var conf = env.conf.templates || {};
-    conf.default = conf.default || {};
-
-    if (items && items.length) {
-        var itemsNav = '';
-
-        items.forEach(function(item) {
-            const methods = helper.find(data, { kind:'function', memberof: item.longname });
-            const members = helper.find(data, { kind:'member', memberof: item.longname });
-
-            if ( !hasOwnProp.call(item, 'longname') ) {
-                itemsNav += '<li>' + linktoFn('', item.name);
-                itemsNav += '</li>';
-            } else if ( !hasOwnProp.call(itemsSeen, item.longname) ) {
-                var displayName;
-                if (!!conf.default.useLongnameInNav) {
-                    displayName = item.longname;
-                    if(conf.default.useLongnameInNav > 0 && conf.default.useLongnameInNav !== true){
-                        var num = conf.default.useLongnameInNav;
-                        var cropped = item.longname.split(".").slice(-num).join(".");
-                        if(cropped !== displayName){
-                            displayName = "..." + cropped;
-                        }
-                    }
-                } else {
-                    displayName = item.name;
-                }
-
-                itemsNav += '<li>' + linktoFn(item.longname, displayName.replace(/^module:/g, ''));
-                if (methods.length) {
-                    itemsNav += "<ul class='methods'>";
-
-                    methods.forEach(function (method) {
-                        itemsNav += "<li data-type='method'>";
-                        itemsNav += linkto(method.longname, method.name);
-                        itemsNav += "</li>";
-                    });
-
-                    itemsNav += "</ul>";
-                }
-                itemsNav += '</li>';
-                itemsSeen[item.longname] = true;
-            }
-        });
-
-        if (itemsNav !== '') {
-            nav += '<h3>' + itemHeading + '</h3><ul>' + itemsNav + '</ul>';
-        }
-    }
-
-    return nav;
-}
-
 function linktoTutorial(longName, name) {
     return tutoriallink(name);
 }
 
 function linktoExternal(longName, name) {
     return linkto(longName, name.replace(/(^"|"$)/g, ''));
-}
-
-/**
- * Create the navigation sidebar.
- * @param {object} members The members that will be used to create the sidebar.
- * @param {array<object>} members.classes
- * @param {array<object>} members.externals
- * @param {array<object>} members.globals
- * @param {array<object>} members.mixins
- * @param {array<object>} members.modules
- * @param {array<object>} members.namespaces
- * @param {array<object>} members.tutorials
- * @param {array<object>} members.events
- * @param {array<object>} members.interfaces
- * @return {string} The HTML for the navigation sidebar.
- */
-function buildNav(data, members) {
-    var nav = '<h2><a href="index.html">Home</a></h2>';
-    var seen = {};
-    var seenTutorials = {};
-
-    nav += buildMemberNav(data, members.classes, 'Classes', seen, linkto);
-    nav += buildMemberNav(data, members.modules, 'Modules', {}, linkto);
-    nav += buildMemberNav(data, members.externals, 'Externals', seen, linktoExternal);
-    nav += buildMemberNav(data, members.events, 'Events', seen, linkto);
-    nav += buildMemberNav(data, members.namespaces, 'Namespaces', seen, linkto);
-    nav += buildMemberNav(data, members.mixins, 'Mixins', seen, linkto);
-    nav += buildMemberNav(data, members.tutorials, 'Tutorials', seenTutorials, linktoTutorial);
-    nav += buildMemberNav(data, members.interfaces, 'Interfaces', seen, linkto);
-
-    if (members.globals.length) {
-        var globalNav = '';
-
-        members.globals.forEach(function(g) {
-            if ( g.kind !== 'typedef' && !hasOwnProp.call(seen, g.longname) ) {
-                globalNav += '<li>' + linkto(g.longname, g.name) + '</li>';
-            }
-            seen[g.longname] = true;
-        });
-
-        if (!globalNav) {
-            // turn the heading into a link so you can actually get to the global page
-            nav += '<h3>' + linkto('global', 'Global') + '</h3>';
-        }
-        else {
-            nav += '<h3>Global</h3><ul>' + globalNav + '</ul>';
-        }
-    }
-
-    return nav;
 }
 
 function formatExample(example) {
@@ -462,6 +357,7 @@ exports.publish = function(taffyData, opts, tutorials) {
     view.tutoriallink = tutoriallink;
     view.htmlsafe = helper.htmlsafe;
     view.outputSourceFiles = conf.default && conf.default.outputSourceFiles !== false;
+    view.useLongnameInNav = conf.default && conf.default.useLongnameInNav !== false;
 
 
     //
@@ -479,7 +375,7 @@ exports.publish = function(taffyData, opts, tutorials) {
         }
 
         if (doclet.see) {
-            doclet.see = doclet.see.map((item) => hashToLink(doclet, item));
+            doclet.see = doclet.see.map(item => hashToLink(doclet, item));
         }
 
         if (doclet.meta) {
@@ -620,7 +516,7 @@ exports.publish = function(taffyData, opts, tutorials) {
     // Generate HTML
     //
 
-    view.nav = buildNav(data, members);
+    view.members = members;
 
     generate(view, '', 'Home', docs, indexUrl);
 
