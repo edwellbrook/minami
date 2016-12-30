@@ -9,13 +9,12 @@ A clean, responsive documentation template theme for JSDoc 3.
 
 - [the Taffy Database library](http://taffydb.com/)
 - [Underscore Template library](http://underscorejs.org/#template)
-- [Montserrat](https://fonts.google.com/specimen/Montserrat) & Helvetica Neue
 
 
 ## Install
 
 ```bash
-$ npm install --save-dev minami
+$ npm install --save-dev github:edwellbrook/minami
 ```
 
 
@@ -83,4 +82,4 @@ Specifying a number for useLongnameInNav it will be the max number of path eleme
 
 ## License
 
-Licensed under the Apache2 license.
+Licensed under the Apache-2.0 license.
