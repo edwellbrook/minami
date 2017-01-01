@@ -82,4 +82,4 @@ Specifying a number for useLongnameInNav it will be the max number of path eleme
 
 ## License
 
-Licensed under the Apache-2.0 license.
+The MIT License (MIT)
