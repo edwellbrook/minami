@@ -109,7 +109,6 @@ tt, code, kbd, samp {
 #main,
 footer {
   float: right;
-  min-width: 360px;
   width: calc(100% - 240px);
   position: relative;
   z-index: 3;
@@ -519,7 +518,6 @@ footer {
 
   #main {
     width: 100%;
-    min-width: 360px;
   }
 
   #main h1.page-title {
