@@ -14,7 +14,7 @@ A clean, responsive documentation template theme for JSDoc 3.
 ## Install
 
 ```bash
-$ npm install --save-dev github:edwellbrook/minami
+$ npm install --save-dev @edwellbrook/minami
 ```
 
 
