@@ -33,7 +33,7 @@ In your projects `package.json` file add a generate script:
 
 ```json
 "script": {
-  "generate-docs": "node_modules/.bin/jsdoc --configure .jsdoc.json --verbose"
+  "generate-docs": "jsdoc -c .jsdoc.json"
 }
 ```
 
