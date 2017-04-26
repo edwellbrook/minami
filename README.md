@@ -41,7 +41,7 @@ In your `.jsdoc.json` file, add a template option.
 
 ```json
 "opts": {
-  "template": "node_modules/minami"
+  "template": "node_modules/@edwellbrook/minami"
 }
 ```
 
@@ -72,7 +72,7 @@ In your `.jsdoc.json` file, add a template option.
         "encoding": "utf8",
         "private": true,
         "recurse": true,
-        "template": "./node_modules/minami"
+        "template": "./node_modules/@edwellbrook/minami"
     }
 }
 ```
