@@ -413,10 +413,11 @@ exports.publish = function(taffyData, opts, tutorials) {
     const staticFiles = fs.ls(fromDir, 3); // allow recursion 3 directories deep
 
     staticFiles.forEach(fileName => {
-        const toDir = fs.toDir(fileName.replace(fromDir, OUTDIR));
+        const toPath = fileName.replace(fromDir, OUTDIR);
+        const toDir = fs.toDir(toPath);
 
         fs.mkPath(toDir);
-        fs.copyFileSync(fileName, toDir);
+        fs.copyFileSync(fileName, toPath);
     });
 
 
