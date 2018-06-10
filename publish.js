@@ -417,7 +417,7 @@ exports.publish = function(taffyData, opts, tutorials) {
         const toDir = fs.toDir(toPath);
 
         fs.mkPath(toDir);
-        fs.copyFileSync(fileName, toPath);
+        fs.copyFileSync(fileName, toDir);
     });
 
 
